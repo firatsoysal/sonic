@@ -26,10 +26,10 @@ try:
     while True:
         print("Started to test. Please do not interrupt!")
         time = datetime.now()
-        print(time)
 
         download_list.append(speedtest.Speedtest().download()/1000000)
         time_list.append(time)
+        print(download_list[-1])
         print("Test ended successfully")
 
         t.sleep(900)
