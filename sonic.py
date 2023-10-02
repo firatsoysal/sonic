@@ -35,7 +35,7 @@ try:
         print(download_list[-1])
         print("Test ended successfully")
 
-        t.sleep(30)
+        t.sleep(900)
 except KeyboardInterrupt:
     plot_graph(time_list, download_list, time)
 
