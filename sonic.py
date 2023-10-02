@@ -1,4 +1,5 @@
 import speedtest
+import csv
 from datetime import datetime
 import time as t
 import matplotlib.pyplot as plt
@@ -16,10 +17,12 @@ def plot_graph(x_axis, y_axis, date):
     plt.show()
 
 
-def write_data(arr, file_name):
-    with open(file_name + ".txt", "w") as file:
-        for value in arr:
-            file.write(str(value) + "\n")
+def write_to_csv(data, file_name):
+    with open(file_name, 'a', newline='') as file:
+        writer = csv.writer(file)
+
+        for row in data:
+            writer.writerow(row)
 
 
 try:
@@ -32,11 +35,12 @@ try:
         print(download_list[-1])
         print("Test ended successfully")
 
-        t.sleep(900)
+        t.sleep(30)
 except KeyboardInterrupt:
-    write_data(download_list, "download_values")
-    write_data(time_list, "times")
     plot_graph(time_list, download_list, time)
 
+    csv_file = "time_and_speed.csv"
+    zipped_data = list(zip(time_list, download_list))
+    write_to_csv(zipped_data, csv_file)
 
 
