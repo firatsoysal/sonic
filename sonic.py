@@ -16,7 +16,7 @@ while True:
 
     dl_speed = speedtest.Speedtest().download()/1000000
     test_time = datetime.now()
-    zipped_data = list(zip(time_list, download_list))
+    zipped_data = list(zip(test_time, dl_speed))
     write_to_csv(zipped_data)
     print(dl_speed)
     print("Test ended successfully")
