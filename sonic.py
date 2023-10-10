@@ -6,18 +6,16 @@ import time as t
 def write_to_csv(data):
     with open("time_and_speed.csv", 'a', newline='') as file:
         writer = csv.writer(file)
-
-        for row in data:
-            writer.writerow(row)
+        writer.writerow(data)
 
 
 while True:
     print("Started to test. Please do not interrupt!")
 
-    dl_speed = speedtest.Speedtest().download()/1000000
+    dl_speed = speedtest.Speedtest(secure=True).download()/1000000
     test_time = datetime.now()
-    zipped_data = list(zip(test_time, dl_speed))
-    write_to_csv(zipped_data)
+    data_to_write = [test_time, dl_speed]
+    write_to_csv(data_to_write)
     print(dl_speed)
     print("Test ended successfully")
 
