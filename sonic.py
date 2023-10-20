@@ -11,6 +11,18 @@ def write_to_csv(data, file_name):
 
 count = 0
 while True:
+    speedtest_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    try:
+        print("Started to speed test. Please do not interrupt!")
+
+        dl_speed = speedtest.Speedtest(secure=True).download()/1000000
+        write_to_csv([speedtest_timetest_time, dl_speed], "time_and_speed.csv")
+        print(dl_speed)
+        print("Speed test ended successfully")
+    except Exception as e:
+        write_to_csv([speedtest_timetest_time, e], "speed_errors.csv")
+        continue
+
     for i in range(300):
         current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         try:
@@ -31,15 +43,3 @@ while True:
         except Exception as e:
             write_to_csv([current_date, e], "disconnect_errors.csv")
             continue
-
-    test_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    try:
-        print("Started to speed test. Please do not interrupt!")
-
-        dl_speed = speedtest.Speedtest(secure=True).download()/1000000
-        write_to_csv([test_time, dl_speed], "time_and_speed.csv")
-        print(dl_speed)
-        print("Speed test ended successfully")
-    except Exception as e:
-        write_to_csv([test_time, e], "speed_errors.csv")
-        continue
