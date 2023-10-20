@@ -16,11 +16,11 @@ while True:
         print("Started to speed test. Please do not interrupt!")
 
         dl_speed = speedtest.Speedtest(secure=True).download()/1000000
-        write_to_csv([speedtest_timetest_time, dl_speed], "time_and_speed.csv")
+        write_to_csv([speedtest_time, dl_speed], "time_and_speed.csv")
         print(dl_speed)
         print("Speed test ended successfully")
     except Exception as e:
-        write_to_csv([speedtest_timetest_time, e], "speed_errors.csv")
+        write_to_csv([speedtest_time, e], "speed_errors.csv")
         continue
 
     for i in range(300):
