@@ -27,12 +27,12 @@ while True:
         current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         try:
             subprocess.run(["sudo", "systemctl", "stop", "dhcpcd"])
-            t.sleep(1)
+            t.sleep(5)
 
-            subprocess.run(["sudo", "systemctl", "start", "dhcpcd"])
-            t.sleep(1)
+curl http://ipv4.download.thinkbroadband.com/20MB.zip> 20MB.zip
+            subprocess.run(["curl", "http://ipv4.download.thinkbroadband.com/20MB.zip", ">", "20MB.zip"])
 
-            subprocess.run(["ping", "8.8.8.8", "-I", "wlan0", "-c", "3"])
+            subprocess.run(["rm", "20MB.zip"])
 
             count += 1
 
